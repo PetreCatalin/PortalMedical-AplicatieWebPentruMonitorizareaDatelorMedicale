@@ -1,0 +1,136 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPage.master.cs" Inherits="MasterPage" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>Med Data</title>
+
+    <link rel="stylesheet" type="text/css" href="Content/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="Content/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="StyleSheet.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet" type="text/css">
+
+    <script type="text/javascript" src="Scripts/bootstrap.js" ></script>
+    <script type="text/javascript" src="Scripts/bootstrap.min.js" ></script>
+    <script type="text/javascript" src="Scripts/jquery-1.9.1.intellisense.js" ></script>
+    <script type="text/javascript" src="Scripts/jquery-1.9.1.js" ></script>
+    <script type="text/javascript" src="Scripts/jquery-1.9.1.min.js" ></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="DefaultJavaScript.js" ></script>
+
+    <asp:ContentPlaceHolder id="head" runat="server">
+    </asp:ContentPlaceHolder>
+    <style type="text/css">
+        .auto-style1 {
+            width: 233px;
+            height: 87px;
+            margin-top: 0px;
+        }
+    </style>
+</head>
+
+<body style="background: url(Imagini/medical4.jpg) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;">
+    <form id="form1" runat="server">
+    <div>
+       
+      <nav class="navbar navbar-inverse" style="background-color:midnightblue; padding-top:20px;">
+          <div class="container-fluid">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>                        
+              </button>
+            <a href="Default.aspx">    <img alt="" class="auto-style1" src="Imagini/MedData.jpg" style="margin-top:-15px;width:15.1vw;" /> </a>
+            </div>
+
+            <div class="collapse navbar-collapse" id="myNavbar">
+              <ul class="nav navbar-nav">
+                <li style="font-style:oblique;font-weight:bold;font-size:1.4vw;"><a href="Default.aspx">Articole</a></li>
+                <li style="font-style:oblique;font-weight:bold;font-size:1.4vw;"><a href="Calculator.aspx">Calculator IMC</a></li>
+
+                  <asp:LoginView ID="LoginView2" runat="server">
+                      <RoleGroups>
+                          <asp:RoleGroup Roles="Editor">
+                              <ContentTemplate>
+                                  <li style="font-style:oblique;font-weight:bold;font-size:1.4vw;"><a href="Editor.aspx">Editor</a></li>
+                              </ContentTemplate>
+                          </asp:RoleGroup>
+                      </RoleGroups>
+                  </asp:LoginView>
+                  
+                  <asp:LoginView ID="LoginView3" runat="server">
+                      <RoleGroups>
+                          <asp:RoleGroup Roles="Administrator">
+                              <ContentTemplate>
+                                  <li style="font-style:oblique;font-weight:bold;font-size:1.4vw;"><a href="Drepturi.aspx">Utilizatori</a></li>
+                              </ContentTemplate>
+                          </asp:RoleGroup>
+                      </RoleGroups>
+                  </asp:LoginView>
+
+                   <asp:LoginView ID="LoginView4" runat="server">
+                      <RoleGroups>
+                          <asp:RoleGroup Roles="Utilizator Inregistrat">
+                              <ContentTemplate>
+                                  <li style="font-style:oblique;font-weight:bold;font-size:1.4vw;"><a href="DateMedicale.aspx">Aplicatii</a></li>
+                              </ContentTemplate>
+                          </asp:RoleGroup>
+                      </RoleGroups>
+                  </asp:LoginView>
+              </ul>
+
+             
+
+
+              <ul class="nav navbar-nav navbar-right">
+                <asp:LoginView ID="LoginView1" runat="server">
+                   <LoggedInTemplate>
+                        <ul class="nav navbar-nav navbar-right">
+                            <li style="color:aqua;font-size:1.4vw; padding-right:40px; margin-top:10px;font-style:oblique;font-weight:bold;font-family:Lobster;margin-left:30px;"> Conectat ca: <asp:LoginName ID="LoginName1" runat="server" /> </li>
+                            <li style="font-style:oblique;font-weight:bold;font-size:1.4vw;margin-left:15px;"> <asp:LoginStatus ID="LoginStatus1" runat="server" LogoutAction="Redirect" LogoutPageUrl="~/Default.aspx"/> </l>
+                        </ul>
+                    </LoggedInTemplate>
+                    <AnonymousTemplate>
+                      <ul class="nav navbar-nav navbar-right">
+                         <li style="font-style:oblique;font-weight:bold;font-size:1.4vw;margin-left:2vw;"><a href="Inregistrare.aspx"><span class="glyphicon glyphicon-user"></span> Inregistrare </a></li>
+                         <li style="font-style:oblique;font-weight:bold;font-size:1.4vw;margin-left:2vw;"><a href="Conectare.aspx"><span class="glyphicon glyphicon-log-in"></span> Conectare </a></li>
+                      </ul> 
+                    </AnonymousTemplate>
+                </asp:LoginView>
+              </ul>
+
+                
+                  <div class="input-group" style="width:24%;">
+                 <input style="margin-left:1vw;margin-top:1%;height:2.6vw;color:blue;font-style:oblique;font-weight:bold;font-size:1.3vw;" type="text" class="form-control" placeholder="Cautati un articol" name="srch-term" id="search" runat="server" />
+                       <p style="margin-left:100%;height:2.2vw;">
+                               <asp:Button ID="Button2" style="height:2.9vw;font-size:1vw;" runat="server" Text="Cautare" OnClick="Button1_Click" BorderColor="Black" BorderStyle="Double" Font-Bold="True" Font-Italic="True" class="btn btn-info btn-lg" />
+         
+                            <div class="alert alert-danger alert-dismissable fade in" Visible="false" id="alertmes"  runat="server" style="align-content:center;margin-left:1vw;width:125%;">
+                               <a href="#" class="close" data-dismiss="alert" aria-label="close"  runat="server">&times;</a>
+                              <strong style="font-style:oblique;">   Va rugam completati campul de search!  </strong>
+                            </div>     
+                       </p> 
+                    </div>
+
+            </div>
+          </div>
+        </nav>
+
+
+        <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server"> 
+        </asp:ContentPlaceHolder>
+  
+    </div>
+    </form>
+
+</body>
+</html>
+

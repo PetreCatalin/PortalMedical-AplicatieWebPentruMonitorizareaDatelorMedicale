@@ -1,0 +1,26 @@
+﻿#navbar {
+    background-color:midnightblue;
+    height:95px;
+    padding-top:20px;
+}
+
+#navbar li {
+  display: inline;
+  font-size:150%;
+}
+
+.dropdown-menu li {
+  text-align:center;
+}
+
+#inregistrare ,#conectare {
+    margin-left:35%;
+}
+
+#inregistrare h2{
+    margin-left:7%;
+}
+
+#conectare h2{
+    margin-left:8%;
+}
